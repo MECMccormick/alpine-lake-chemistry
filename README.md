@@ -24,3 +24,6 @@ You will need the following packages in order to run this notebook:
 
 ## Applying this workflow
 Currently, this workflow relies on simple .csv files containing lake chemistry and geology data. You may also want shapefiles of the boundaries of your study area for the purpose of generating map figures. I intend to update this repository and workflow with geospatial files representing the geology in these areas. These would also likely be shapefiles, probably sourced from the US Geological Survey's National Geologic Map Database (NGMD).
+
+#### Citation information
+[![DOI](https://zenodo.org/badge/368690878.svg)](https://zenodo.org/badge/latestdoi/368690878)
