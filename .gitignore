@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Ignore the data folder (after initial commit, it is not necessary to update)
+data/
+
+# Ignore presentations and figures (do not need to be updated each time)
+figures/
+presentations/
+
+# Ignore the license file
+LICENSE
