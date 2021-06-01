@@ -8,23 +8,24 @@ Using geospatial analyses, I hope to answer the following questions:
 * **How closely correlated are ion concentrations to water quality parameters?**
 * **To what extent is alpine lake chemistry changing over time?**
 
-## Data and Packages
-The lake chemistry data are not yet published, but will be in the future via the USFS following federal guidelines. I have made the version I'm working with available in this repo. Please contact me if you have any issues accessing it in order to run the python scripts.
+## Data
+The lake chemistry data are not yet published, but will be in the future via the USFS following federal guidelines. I have made the version I'm working with available in this repo. Please contact me if you have any issues accessing it in order to run the python scripts. Additional data used in this workflow were downloaded from the US Census Bureau's TIGER shapefile database. The file types used are: .csv and .shp
 
-Currently, the entire workflow is contained in the 'ea-2021-lakechem-proj-MECM.ipynb' file. As long as you have downloaded the data provided in this repository, the notebook should run from start to finish with no issues.
+## Running this workflow
+Currently, the entire workflow is contained in the 'ea-2021-lakechem-proj-MECM.ipynb' file. The notebook relies on some python packages that you may not have installed. The 'lakes-environment.yml' file provided in this repo contains all of the packages you will need to run this workflow. The environment is based on CU Boulder Earth Lab's 'earth-analytics-python' environment. Please install and run the environment. As long as you have downloaded the data provided in this repository and run the environment, the notebook should run from start to finish with no issues.
 
-You will need the following packages in order to run this notebook:
-* numpy
-* pandas
-* matplotlib.pyplot
-* earthpy
-* geopandas
-* folium
-* contextily
-* seaborn
+### Installing and running the environment
+1. In bash, `cd` to the `alpine-lake-chemistry` directory.
+2. Install the `lakes-environment.yml` file.
+`$ cd alpine-lake-chemistry
+$ conda env create -f lakes-environment.yml`
+3. Now you can activate the workflow environment and launch Jupyter Notebook...
+`$ conda activate lake-chem-env
+$ jupyter notebook`
+4. and run the workflow notebook from there!
 
 ## Applying this workflow
-Currently, this workflow relies on simple .csv files containing lake chemistry and geology data. You may also want shapefiles of the boundaries of your study area for the purpose of generating map figures. I intend to update this repository and workflow with geospatial files representing the geology in these areas. These would also likely be shapefiles, probably sourced from the US Geological Survey's National Geologic Map Database (NGMD).
+Currently, this workflow relies on simple .csv files containing lake chemistry and geology data. [TODO: PROVIDE A DATA 'SNAPSHOT' SHOWING HEADER STRUCTURE] You may also want shapefiles of the boundaries of your study area for the purpose of generating map figures. I intend to update this repository and workflow with geospatial files representing the geology in these areas. These would also likely be shapefiles sourced from the US Geological Survey's National Geologic Map Database (NGMD).
 
 #### Citation information
 [![DOI](https://zenodo.org/badge/368690878.svg)](https://zenodo.org/badge/latestdoi/368690878)
