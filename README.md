@@ -17,12 +17,16 @@ Currently, the entire workflow is contained in the 'ea-2021-lakechem-proj-MECM.i
 ### Installing and running the environment
 1. In bash, `cd` to the `alpine-lake-chemistry` directory.
 2. Install the `lakes-environment.yml` file.
-`$ cd alpine-lake-chemistry
-$ conda env create -f lakes-environment.yml`
+```
+$ cd alpine-lake-chemistry
+$ conda env create -f lakes-environment.yml
+```
 3. Now you can activate the workflow environment and launch Jupyter Notebook...
-`$ conda activate lake-chem-env
-$ jupyter notebook`
-4. and run the workflow notebook from there!
+```
+$ conda activate lake-chem-env
+$ jupyter notebook
+```
+4. ...and run the workflow notebook from there!
 
 ## Applying this workflow
 Currently, this workflow relies on simple .csv files containing lake chemistry and geology data. [TODO: PROVIDE A DATA 'SNAPSHOT' SHOWING HEADER STRUCTURE] You may also want shapefiles of the boundaries of your study area for the purpose of generating map figures. I intend to update this repository and workflow with geospatial files representing the geology in these areas. These would also likely be shapefiles sourced from the US Geological Survey's National Geologic Map Database (NGMD).
