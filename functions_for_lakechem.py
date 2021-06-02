@@ -1,19 +1,33 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Custom functions for alpine-lakes workflow
-
-# In[1]:
-
-
-import pandas as pd
-import geopandas as gpd
-
-
-# In[2]:
-
-
-# Function one : for pulling unique coordinate pairs from a dataframe
+# Custom functions for alpine-lakes workflow
+# Function one : for checking coordinate column names.
+def name_check(source_df):
+    '''Check the column names in the profided dataframe. If they meet the
+    requirements for function two (pull_coords), the check will pass. If not,
+    the check will fail and raise an error.
+    
+    Parameters
+    -----------
+    source_df : pandas dataframe object
+        The dataframe containing site names, coordinates, and data (lake water
+        chemistry, for example).
+    
+    Returns
+    -----------
+    A print statement reassurance or an exception.
+    '''
+    colnames = list(source_df.columns)
+    needed_names = ['LAT', 'LONG']
+    
+    for name in needed_names:
+        if name in colnames:
+            print('The', name, 'column does not need to be renamed.')
+        else:
+            raise ValueError('The column does not exist or needs to be renamed for pull_coords to run.')
+        
+# Function two : for pulling unique coordinate pairs from a dataframe
 def pull_coords(source_df, site_ID, lat_col, long_col, crs):
     '''Create a geopandas dataframe (gdf) containing the coordinates for your 
     features of interest (for example, lakes) and a unique identifier for each
@@ -51,17 +65,19 @@ def pull_coords(source_df, site_ID, lat_col, long_col, crs):
         meant to make plotting site/feature locations simpler.
 
     '''
+    # Check that the column names are correct and rename them if necessary so
+    # that gpd.GeoDataFrame() does not fail.
+    try:
+        name_check(source_df)
+    except ValueError:
+        source_df = source_df.rename(columns={lat_col: 'LAT', long_col: 'LONG'})
+        return source_df
 
     # Subset the data and pull unique coordinate pairs to make a geodataframe.
     coords_subset = source_df[[site_ID, lat_col, long_col]]
-    
-    # Use groupby to get only unique coordinate pairs, and rename columns for
-    # consistency within this function.
     coords_unique = coords_subset.groupby(
         [site_ID, lat_col, long_col]).count().reset_index()
-    coords_unique = coords_unique.rename(
-        columns={lat_col: 'LAT', long_col: 'LONG'})
-
+    
     # Convert coords_unique to a gdf by specifying geometry and crs.
     coords_gdf = gpd.GeoDataFrame(coords_unique, geometry=gpd.points_from_xy(
         coords_unique.LONG, coords_unique.LAT))
@@ -69,8 +85,8 @@ def pull_coords(source_df, site_ID, lat_col, long_col, crs):
 
     return coords_gdf
 
-# Function two : for quickly generating timeseries plots
-def time_plot(grouped_df, an_ion, axis, color_dict):
+# Function three : for quickly generating timeseries plots
+def time_plot(grouped_df, a_param, axis, color_dict):
     """Create a single plot of ion concentration/chemical property for the
     specified years and lake group.
     
@@ -79,7 +95,7 @@ def time_plot(grouped_df, an_ion, axis, color_dict):
     grouped_df : grouped pandas df object
         The grouped dataframe containing data you want to plot.
 
-    an_ion : string
+    a_param : string
         A string describing the name of the ion or other parameter you want to
         plot (this should be a column name in grouped_df).
 
@@ -96,7 +112,7 @@ def time_plot(grouped_df, an_ion, axis, color_dict):
         lake or group of lakes.
     """
 
-    for alake, anarray in grouped_df[an_ion]:
+    for alake, anarray in grouped_df[a_param]:
         plot_obj = anarray.plot(ax=axis,
                                 ls='None',
                                 marker='o',
@@ -107,9 +123,22 @@ def time_plot(grouped_df, an_ion, axis, color_dict):
                                 label=alake)
     return plot_obj
 
-
-# In[ ]:
-
-
-
-
+# Function four : for quickly generating parameter plots
+def param_plot():
+    '''
+    Parameters
+    -----------
+    
+    
+    Returns
+    -----------
+    plot_obj : 
+        A plot object.
+    '''
+    for alake
+    ax2.plot(lakechem_subset['Ca'],
+         lakechem_subset['ANC'],
+         ls='None',
+         marker='o',
+         markersize=8,
+         mfc='None')
