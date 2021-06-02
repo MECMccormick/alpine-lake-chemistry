@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import geopandas as gpd
+
 # Custom functions for alpine-lakes workflow
 # Function one : for checking coordinate column names.
 def name_check(source_df):
@@ -124,21 +126,21 @@ def time_plot(grouped_df, a_param, axis, color_dict):
     return plot_obj
 
 # Function four : for quickly generating parameter plots
-def param_plot():
-    '''
-    Parameters
-    -----------
+# def param_plot():
+#     '''
+#     Parameters
+#     -----------
     
     
-    Returns
-    -----------
-    plot_obj : 
-        A plot object.
-    '''
-    for alake
-    ax2.plot(lakechem_subset['Ca'],
-         lakechem_subset['ANC'],
-         ls='None',
-         marker='o',
-         markersize=8,
-         mfc='None')
+#     Returns
+#     -----------
+#     plot_obj : 
+#         A plot object.
+#     '''
+#     for alake in :
+#     ax2.plot(lakechem_subset['Ca'],
+#          lakechem_subset['ANC'],
+#          ls='None',
+#          marker='o',
+#          markersize=8,
+#          mfc='None')
