@@ -29,9 +29,12 @@ dependencies:
   - mapboxgl
   - hydrofunctions
   - geocoder
-  - tweepy
   - xarray
   - scipy
+  
+  # Natural language processing
+  - nltk 
+  - textblob
 
   # Jupyter Environment
   - papermill

@@ -88,7 +88,7 @@ def pull_coords(source_df, site_ID, lat_col, long_col, crs):
     return coords_gdf
 
 # Function three : for quickly generating timeseries plots
-def time_plot(grouped_df, a_param, axis, color_dict):
+def time_plot(grouped_df, a_param, axis, color_dict, marker = 'o'):
     """Create a single plot of ion concentration/chemical property for the
     specified years and lake group.
     
@@ -106,6 +106,10 @@ def time_plot(grouped_df, a_param, axis, color_dict):
     
     color_dict : string
         The name of a custom color dictionary for plotting.
+    
+    marker : string, Default = 'o'
+        Optional. A string describing the marker type you want to use. See the
+        matplotlib.pyplot documentation for a list of acceptable strings.
 
     Returns
     -----------
@@ -114,33 +118,14 @@ def time_plot(grouped_df, a_param, axis, color_dict):
         lake or group of lakes.
     """
 
-    for alake, anarray in grouped_df[a_param]:
+    for acategory, anarray in grouped_df[a_param]:
         plot_obj = anarray.plot(ax=axis,
                                 ls='None',
-                                marker='o',
+                                marker=marker,
                                 markersize=10,
                                 mfc='None',
                                 mew=1.5,
-                                markeredgecolor=color_dict[alake],
-                                label=alake)
+                                markeredgecolor=color_dict[acategory],
+                                alpha = 0.9,
+                                label=acategory)
     return plot_obj
-
-# Function four : for quickly generating parameter plots
-# def param_plot():
-#     '''
-#     Parameters
-#     -----------
-    
-    
-#     Returns
-#     -----------
-#     plot_obj : 
-#         A plot object.
-#     '''
-#     for alake in :
-#     ax2.plot(lakechem_subset['Ca'],
-#          lakechem_subset['ANC'],
-#          ls='None',
-#          marker='o',
-#          markersize=8,
-#          mfc='None')
