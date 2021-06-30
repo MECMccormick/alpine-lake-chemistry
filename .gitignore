@@ -133,7 +133,7 @@ dmypy.json
 data/
 
 # Ignore presentations and figures (do not need to be updated each time)
-figures/
+# figures/
 presentations/
 
 # Ignore the license file
