@@ -122,9 +122,9 @@ def time_plot(grouped_df, a_param, axis, color_dict, marker = 'o'):
         plot_obj = anarray.plot(ax=axis,
                                 ls='None',
                                 marker=marker,
-                                markersize=10,
+                                markersize=7,
                                 mfc='None',
-                                mew=1.5,
+                                mew=1.75,
                                 markeredgecolor=color_dict[acategory],
                                 alpha = 0.9,
                                 label=acategory)

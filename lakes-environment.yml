@@ -32,10 +32,6 @@ dependencies:
   - xarray
   - scipy
   
-  # Natural language processing
-  - nltk 
-  - textblob
-
   # Jupyter Environment
   - papermill
   - autopep8
