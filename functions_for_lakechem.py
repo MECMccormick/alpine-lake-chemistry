@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import geopandas as gpd
+import geopandas as gpud
 
 # Custom functions for alpine-lakes workflow
 # Function one : for checking coordinate column names.
